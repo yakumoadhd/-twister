@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+  <title>🎡 ツイスターゲーム</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Noto+Sans+JP:wght@400;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- ===== TOP SCREEN ===== -->
+  <div id="screen-top" class="screen active">
+    <div class="top-inner">
+      <div class="top-title">
+        <span class="title-icon">🎡</span>
+        <h1>ツイスターゲーム</h1>
+        <p class="top-subtitle">みんなで楽しくあそぼう！</p>
+      </div>
+
+      <section class="setup-section">
+        <div class="section-label">👥 参加人数</div>
+        <div id="count-selector" class="count-selector">
+          <button class="count-btn" data-count="1">1人</button>
+          <button class="count-btn active" data-count="2">2人</button>
+          <button class="count-btn" data-count="3">3人</button>
+          <button class="count-btn" data-count="4">4人</button>
+        </div>
+      </section>
+
+      <section class="setup-section">
+        <div class="section-label">🎭 プレイヤー設定</div>
+        <div id="player-setup"></div>
+      </section>
+
+      <section class="setup-section">
+        <div class="section-label">⚡ 罰ゲームリスト（最大5つ）</div>
+        <div id="penalty-inputs"></div>
+      </section>
+
+      <button id="btn-start-game" class="btn-start">
+        🎮 ゲームスタート
+      </button>
+    </div>
+  </div>
+
+  <!-- ===== ROULETTE SCREEN ===== -->
+  <div id="screen-roulette" class="screen">
+    <!-- Header: 画面上部の1/4 -->
+    <div id="header-box">
+      <div id="header-content">
+        <p id="header-text" class="header-main-text">ルーレットを回してね！</p>
+      </div>
+      <div id="header-actions" class="header-actions hidden">
+        <button id="btn-dekita" class="btn-act btn-green">✅ 出来た！</button>
+        <button id="btn-nuida" class="btn-act btn-purple hidden">💃 脱いだ！🕺</button>
+        <button id="btn-giveup-act" class="btn-act btn-red">💦 ギブアップ</button>
+      </div>
+      <div id="countdown-box" class="hidden">
+        <div id="countdown-num">10</div>
+        <span id="countdown-label">秒</span>
+        <button id="btn-giveup-cd" class="btn-act btn-red btn-sm">💦 ギブアップ</button>
+      </div>
+    </div>
+
+    <!-- Wheel Area: 残り3/4の上半分 -->
+    <div id="wheel-area">
+      <div id="needle-wrap"><div id="needle" class="needle">▼</div></div>
+      <canvas id="wheel-canvas"></canvas>
+      <button id="spin-btn" class="spin-btn">▶ スタート</button>
+    </div>
+
+    <!-- Player Marks: ルーレット直下からフッターまで -->
+    <div id="player-marks-area"></div>
+
+    <!-- Footer -->
+    <div id="roulette-footer">
+      <button id="btn-giveup-footer" class="btn-footer btn-danger-footer">ギブアップ</button>
+      <button id="btn-back-roulette" class="btn-footer btn-ghost-footer">戻る</button>
+    </div>
+  </div>
+
+  <!-- ===== PENALTY SCREEN ===== -->
+  <div id="screen-penalty" class="screen">
+    <h2 class="penalty-title">⚡ 罰ゲームタイム！</h2>
+    <p id="penalty-instruction-text">罰ゲームを選択して下さい</p>
+    <div id="penalty-cards-wrap">
+      <div id="penalty-cards-area"></div>
+    </div>
+    <div id="penalty-result-text" class="penalty-result-text hidden"></div>
+    <button id="btn-back-penalty" class="btn-footer btn-ghost-footer hidden" style="margin-top:12px;">戻る（トップへ）</button>
+    <canvas id="confetti-canvas"></canvas>
+  </div>
+
+  <!-- ===== AFFILIATE SCREEN ===== -->
+  <div id="screen-affiliate" class="screen">
+    <div class="affiliate-inner">
+      <h2 id="affiliate-title">今すぐアクセス！</h2>
+      <div id="affiliate-body">
+        <img id="affiliate-qr" src="" alt="QRコード" class="affiliate-qr">
+        <a id="affiliate-link" href="#" target="_blank" rel="noopener" class="btn-start affiliate-btn">
+          アクセスする 🔗
+        </a>
+      </div>
+      <button id="btn-back-affiliate" class="btn-footer btn-ghost-footer" style="margin-top:20px;">戻る（トップへ）</button>
+    </div>
+  </div>
+
+  <!-- Voice Status Indicator -->
+  <div id="voice-status" class="voice-status hidden">
+    <span id="voice-icon">🎤</span>
+    <span id="voice-text">音声認識中</span>
+  </div>
+
+  <!-- Hearts container (global) -->
+  <div id="hearts-overlay"></div>
+
+  <script src="app.js"></script>
+</body>
+</html>
